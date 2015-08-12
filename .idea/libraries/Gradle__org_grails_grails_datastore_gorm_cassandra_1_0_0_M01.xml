@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.grails:grails-datastore-gorm-cassandra:1.0.0-M01">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-cassandra/1.0.0-M01/4b2946cf92647b29b1524167c1b70cb5ed8804d4/grails-datastore-gorm-cassandra-1.0.0-M01.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-cassandra/1.0.0-M01/7632ab09d7eb0640c31f9c3ee232275e3cd824c4/grails-datastore-gorm-cassandra-1.0.0-M01-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

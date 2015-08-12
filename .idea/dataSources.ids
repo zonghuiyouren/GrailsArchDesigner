@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - grails@localhost" uuid="de3e7846-e5b2-4328-baa7-d90180862258">
+    <database-info product="MySQL" version="5.5.42" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="grails"/>
+    <table name="alternative" schema="" catalog="grails" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="alternative_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="app_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="decision_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_2g7a5304dr9vwrdjgucd15esy" columns="decision_id" ref-table="decision" ref-schema="" ref-catalog="grails" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_9503gej8ra3kmfc5roc8ql4xh" columns="app_id" ref-table="arch_application" ref-schema="" ref-catalog="grails" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_2g7a5304dr9vwrdjgucd15esy" unique="false" columns="decision_id"/>
+      <index name="FK_9503gej8ra3kmfc5roc8ql4xh" unique="false" columns="app_id"/>
+    </table>
+    <table name="arch_application" schema="" catalog="grails" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="app_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="remark" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="user_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_59vkwohjfkga4ileh67mcoyl2" columns="user_id" ref-table="user" ref-schema="" ref-catalog="grails" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_9503gej8ra3kmfc5roc8ql4xh" table="alternative" schema="" catalog="grails" columns="app_id"/>
+      <exported-key name="FK_s4b2hevsu1tn15gpeo6rckgc2" table="decision" schema="" catalog="grails" columns="app_id"/>
+      <exported-key name="FK_40ormgrt9rwkkw5if9ly1smno" table="quality" schema="" catalog="grails" columns="app_id"/>
+      <exported-key name="FK_3cpac5irg9mr743y3xt0l6p7r" table="stakeholder" schema="" catalog="grails" columns="app_id"/>
+      <index name="FK_59vkwohjfkga4ileh67mcoyl2" unique="false" columns="user_id"/>
+    </table>
+    <table name="decision" schema="" catalog="grails" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="app_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="quality_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="stakeholder_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="weight" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_fdss4rkv0y89e43c2gyaj9va4" columns="stakeholder_id" ref-table="stakeholder" ref-schema="" ref-catalog="grails" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_mnh7dn81588i46p5qr4aq9p2a" columns="quality_id" ref-table="quality" ref-schema="" ref-catalog="grails" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_s4b2hevsu1tn15gpeo6rckgc2" columns="app_id" ref-table="arch_application" ref-schema="" ref-catalog="grails" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_2g7a5304dr9vwrdjgucd15esy" table="alternative" schema="" catalog="grails" columns="decision_id"/>
+      <index name="FK_fdss4rkv0y89e43c2gyaj9va4" unique="false" columns="stakeholder_id"/>
+      <index name="FK_mnh7dn81588i46p5qr4aq9p2a" unique="false" columns="quality_id"/>
+      <index name="FK_s4b2hevsu1tn15gpeo6rckgc2" unique="false" columns="app_id"/>
+    </table>
+    <table name="inter_relationship" schema="" catalog="grails" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="quality" schema="" catalog="grails" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="app_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="quality_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_40ormgrt9rwkkw5if9ly1smno" columns="app_id" ref-table="arch_application" ref-schema="" ref-catalog="grails" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_mnh7dn81588i46p5qr4aq9p2a" table="decision" schema="" catalog="grails" columns="quality_id"/>
+      <index name="FK_40ormgrt9rwkkw5if9ly1smno" unique="false" columns="app_id"/>
+    </table>
+    <table name="stakeholder" schema="" catalog="grails" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="app_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="remark" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="stakeholer_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_3cpac5irg9mr743y3xt0l6p7r" columns="app_id" ref-table="arch_application" ref-schema="" ref-catalog="grails" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_fdss4rkv0y89e43c2gyaj9va4" table="decision" schema="" catalog="grails" columns="stakeholder_id"/>
+      <index name="FK_3cpac5irg9mr743y3xt0l6p7r" unique="false" columns="app_id"/>
+    </table>
+    <table name="user" schema="" catalog="grails" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="version" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="token" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_59vkwohjfkga4ileh67mcoyl2" table="arch_application" schema="" catalog="grails" columns="user_id"/>
+    </table>
+  </data-source>
+</component>
